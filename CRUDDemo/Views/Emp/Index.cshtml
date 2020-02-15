@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CRUDDemo.Models.EmployeeModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>List Of Employees</h3>
+<hr />
+<p>
+    @Html.ActionLink("Add Employee", "Create", "Emp", "", new { @class = "btn btn-md btn-info pull-right" })
+</p>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeEmail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeAge)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeSalary)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeAge)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeSalary)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Emp", new { empId = item.EmployeeID }, new { @class = "btn btn-sm btn-warning" }) |
+                        @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })*@
+                        @Html.ActionLink("Delete", "Delete", "Emp", new { empId = item.EmployeeID }, new { @class = "btn btn-sm btn-danger", onclick = "return confirm('Are you sure you wish to delete this article?');" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
